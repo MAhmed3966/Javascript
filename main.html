@@ -13,9 +13,14 @@ let x = 1 ;
 
 const parentFunctions = () => {
     // local scope is
-    let myValue = 1 ;
+    let myValue = 2 ;
     console.log(x);
-    console.log({myValue});
+    console.log({myValue}); 
+    const childFunctions = () => {
+        console.log(x += 5)
+        console.log(myValue += 1)
+    }
+    childFunctions();
 }
 parentFunctions()
 </script>

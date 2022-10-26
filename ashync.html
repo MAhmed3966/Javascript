@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <h1>Javascript</h1>
+</body>
+</html>
+
+<script>
+
+    const asynchAwaitFunctionDemo = async () => {
+        console.log('Inside the fync');
+        const response  =  fetch('https://api.publicapis.org/entries');
+        console.log('After using first await')
+        const users = await response.json();
+        return users;
+    }
+
+    console.log('before calling the function')
+    let users = asynchAwaitFunctionDemo() 
+    console.log('after calling the function')
+    console.log(users)
+    users.then(data => console.log(data))
+    console.log('end of the code')
+</script>
