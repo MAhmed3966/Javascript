@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Tutorials</title>
+</head>
+
+<body>
+    <h1>Callback Functions</h1>
+    <h1>Students Are:</h1>
+    <div id="students"></div>
+</body>
+
+</html>
+<!-- Call back functions  -->
+
+<script>
+    const users = [{ name: "John", subject: "CS" },
+    { name: "Ahmed", subject: "SE" }
+    ]
+    //  callback function is a function inside a function
+    const getStudents = () => {
+
+        setTimeout(() => {
+            let str = "";
+            users.forEach((user) => {
+                str += `<li>Name of the Student is : ${user.name}</li>`
+            })
+            document.getElementById('students').innerHTML = str;
+        }, 1000)
+    }
+    const newStudent = [{ name: "Mishab", subject: "Cricket" },
+    { name: "Waqar", subject: "Coaching" },
+    { name: "Fakhar", subject: "Anchor" }
+    ]
+    const addStudents = (callback) => {
+        setTimeout(() => {
+            newStudent.forEach(student => {
+                users.push(student)
+            })
+            callback()
+
+        }, 2000)
+    }
+    addStudents(getStudents)
+
+</script>
