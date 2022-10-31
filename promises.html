@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+</head>
+<body>
+    <h1>Promises</h1>
+</body>
+
+<script>
+    const getStudent = (callback,callback1) => {
+        setTimeout(() =>{
+            console.log('hello world');
+            callback(callback1);
+        },1000)
+    }
+    const AddStudent = (callback) => {
+        setTimeout(() =>{
+        console.log('logged from add student function')
+        callback()
+        },2000)
+    }
+    const printStudent = () => {
+        setTimeout(() =>{
+        console.log('logged from add printStudent')
+        },3000)
+    }
+    getStudent(AddStudent, printStudent)
+</script>
+
+</html>
