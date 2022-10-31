@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promises</title>
 </head>
+
 <body>
-    <h1>Promises</h1>
+    <h1> Without async Javascript</h1>
+    <h1>Students are: </h1>
+    <div id="show-students">
+
+    </div>
 </body>
 
 <script>
-    const getStudent = (callback,callback1) => {
-        setTimeout(() =>{
-            console.log('hello world');
-            callback(callback1);
-        },1000)
+    const students = [
+        { name: 'John', sub: 'xyz' },
+        { name: 'jacky', sub: 'xyz' },
+        { name: 'Abiha', sub: 'xyz' }
+    ];
+    const newStudent = 
+        {
+            name: "gina", sub: "xyz"
+        }
+    
+    const getStudents = () => {
+        // without async Javascript
+        console.log('in get student outside the settimeout')
+        let str = ``;
+        setTimeout(() => {
+            console.log('in get student inside the settimeout')
+            students.forEach(student => {
+                str = str + `<li>${student.name}</li>`
+            })
+            document.getElementById('show-students').innerHTML = str;
+        })
     }
-    const AddStudent = (callback) => {
-        setTimeout(() =>{
-        console.log('logged from add student function')
-        callback()
-        },2000)
+
+    const addStudents = (callback) => {
+        console.log('in add student outside the settimeout')
+        setTimeout(() => {
+            console.log('in add student inside the settimeout')
+            students.push(newStudent)
+            callback()
+        }, 1000)
     }
-    const printStudent = () => {
-        setTimeout(() =>{
-        console.log('logged from add printStudent')
-        },3000)
-    }
-    getStudent(AddStudent, printStudent)
+    addStudents(getStudents);
+    // getStudents();
+
+
 </script>
 
 </html>
