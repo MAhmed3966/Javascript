@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 1</title>
+</head>
+
+<body>
+    <h1>Promises </h1>
+</body>
+<script>
+    // resolve, reject are callbacks !
+    // 1. resolve(value)  if the job is done successfully then value 
+    // result
+    //  2. and reject(error) if the error occurs then error will act 
+    // as an error object and return that
+    // 3. state initially pending then changes to either fulfilled
+    // or rejected when reject is called 
+    // result initally is undefined then changes to value when 
+    // resolve(value) is called or error when reject(error) is called 
+
+    /* An example 
+      promise function is
+       Promise {<pending>}[[Prototype]]:
+       Promise[[PromiseState]]: "pending"
+       [[PromiseResult]]: undefined
+  
+    */
+    //  so this will give the result and 
+    let promiseFunction = new Promise((resolve, reject) => {
+        // the executer the producer code
+        name = "My name is Ahmed Abdullah";
+        setTimeout(() => {
+            let error = false;
+            if (!error) {
+                resolve(name)
+            }
+            else {
+                reject(new Error('Process Failed'))
+            }
+        }, 2000)
+    })
+
+    // code below will sort of display the results
+    promiseFunction.then(
+        result => console.log("the result is", result),
+        error => console.log("error is", error)
+    )
+
+</script>
+
+</html>

@@ -22,11 +22,11 @@
         { name: 'jacky', sub: 'xyz' },
         { name: 'Abiha', sub: 'xyz' }
     ];
-    const newStudent = 
-        {
-            name: "gina", sub: "xyz"
-        }
-    
+    const newStudent =
+    {
+        name: "gina", sub: "xyz"
+    }
+
     const getStudents = () => {
         // without async Javascript
         console.log('in get student outside the settimeout')
@@ -40,15 +40,34 @@
         })
     }
 
-    const addStudents = (callback) => {
-        console.log('in add student outside the settimeout')
-        setTimeout(() => {
-            console.log('in add student inside the settimeout')
-            students.push(newStudent)
-            callback()
-        }, 1000)
+    const addStudents = () => {
+        return new Promise((resolve, reject) => {
+            console.log('this is in promise starter')
+            // setTimeout(() => {
+                const response = fetch('https://api.publicapis.org/entries');
+                console.log('after fetching')
+                if (response.statusCode !== 200) {
+                    const users =  response.json();
+                    users.forEach(user => {
+                        console.log('username is', user.username);
+                    })
+                    resolve(users);
+                }
+                else {
+                    reject("No Response found")
+                }
+            // }, 4000)
+
+        });
     }
-    addStudents(getStudents);
+
+    addStudents().then(result => {
+        // result.for(user => {
+        //     console.log('username is', user.username);
+        // })
+    }).catch(function (error) {
+        console.log("Error is", error)
+    });
     // getStudents();
 
 
